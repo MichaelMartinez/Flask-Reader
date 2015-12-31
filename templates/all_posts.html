@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block my_header %}
+    <header class="main-header">
+        <div class="container">
+            <h1 class="page-title">{{ page_title }}</h1>
+        </div>
+    </header>
+{% endblock %}
+{% block page_content %}
+    {% for i in the_posts %}
+        <section>
+            <h2 class="page-header no-margin-top"><a href="{{ i['link'] | safe }}">{{ i['title'] | safe }}</a></h2>
+
+            <p>{{ i['summary'] | safe }}</p>
+
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fa fa-clock-o"></i> {{ i['published'] | safe }} <i class="fa fa-user"> </i> <a
+                            href="{{ i['link'] | safe }}"> {{ i['link'] | safe }} </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block my_header %}
+    <header class="main-header">
+    <div class="container">
+        <h1 class="page-title">{{ page_title }}</h1>
+    </div>
+    </header>
+{% endblock %}
+{% block page_content %}
+   {{my_posts | safe}}
+{% endblock %}
+
+
+

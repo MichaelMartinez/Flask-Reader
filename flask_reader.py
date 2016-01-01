@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request
 # Import flask-bootstrap extension from extension namespace
 from flask.ext.bootstrap import Bootstrap
 # Import flask moment stuff
@@ -6,7 +6,7 @@ from flask.ext.moment import Moment
 
 from flask.ext.script import Manager
 import os
-from rss_feed import get_sorted_posts, get_posts, get_single_blog
+from rss_feed import get_sorted_posts, get_posts, get_single_blog, get_subscriptions
 
 # set up base directory
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -16,7 +16,8 @@ app = Flask(__name__)
 
 # Set secret key for csrf in WTF forms
 app.config['SECRET_KEY'] = 'kjer9034-09uei0909KW454()%(Q#)(I)(IKJWEI'
-
+app.config['DEBUG'] = True
+app.config['TRAP_BAD_REQUEST_ERRORS'] = True
 # initialize flask bootstrap
 bootstrap = Bootstrap(app)
 
@@ -39,11 +40,20 @@ def index():
     return render_template('index.html', my_posts=my_posts, page_title=page_title)
 
 
-@app.route('/all')
+# Needs some work, but this renders the feed sent from the /subscriptions page
+@app.route('/all_posts')
 def all_posts():
-    page_title = 'All posts from: '
-    the_posts = get_single_blog()
+    subs = request.args.get('sub')
+    page_title = 'All posts from: %s' %subs
+    the_posts = get_single_blog(subs)
     return render_template('all_posts.html', the_posts=the_posts, page_title=page_title)
+
+# Grabs the list of subscriptions and renders them to this page
+@app.route('/subscriptions')
+def subscriptions():
+    subs = get_subscriptions()
+    page_title = 'All Subscriptions'
+    return render_template('subs.html', subs=subs, page_title=page_title)
 
 
 @app.errorhandler(404)

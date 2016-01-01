@@ -61,7 +61,8 @@ subscriptions = [
     'http://lucumr.pocoo.org/feed.atom',
     'http://planetpython.org/rss20.xml',
     'https://hackaday.com/blog/feed/',
-    'http://planet.ubuntu.com/rss20.xml']
+    'http://planet.ubuntu.com/rss20.xml',
+    'http://www.ianww.com/blog/rss/']
 
 # Date and time setup. I want only posts from "today,"
 # where the day lasts until 2 AM.
@@ -107,10 +108,15 @@ def get_posts():
 
 
 # Feed the all_posts path an individual blog/feed to parse and display from inside the template
-def get_single_blog():
-    the_feed = fp.parse('http://planet.ubuntu.com/rss20.xml')
+def get_single_blog(feed):
+    the_feed = fp.parse(feed)
     single_blog_posts = the_feed['entries']
     return single_blog_posts
+
+# simple method to be called from the main app
+def get_subscriptions():
+    s = subscriptions
+    return s
 
 
 # This method returns generated html with the days posts.

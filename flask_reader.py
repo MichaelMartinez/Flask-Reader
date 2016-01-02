@@ -1,5 +1,7 @@
 import os
-from flask import Flask, render_template, redirect, request
+
+from flask import Flask, render_template, request
+
 # Import flask-bootstrap extension from extension namespace
 from flask.ext.bootstrap import Bootstrap
 # Import flask moment stuff
@@ -39,17 +41,18 @@ def index():
     return render_template('index.html', my_posts=my_posts, page_title=page_title)
 
 
-# Needs some work, but this renders the feed sent from the /subscriptions page
 @app.route('/all_posts')
 def all_posts():
+    '''Needs some work, but this renders the feed sent from the /subscriptions page'''
     subs = request.args.get('sub')
-    page_title = 'All posts from: %s' %subs
+    page_title = 'All posts from: %s' % subs
     the_posts = get_single_blog(subs)
     return render_template('all_posts.html', the_posts=the_posts, page_title=page_title)
 
-# Grabs the list of subscriptions and renders them to this page
+
 @app.route('/subscriptions')
 def subscriptions():
+    ''' Grabs the list of subscriptions and renders them to this page'''
     subs = get_subscriptions()
     page_title = 'All Subscriptions'
     return render_template('subs.html', subs=subs, page_title=page_title)

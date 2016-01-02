@@ -1,5 +1,6 @@
 import time
 from datetime import datetime, timedelta
+
 import feedparser as fp
 import pytz
 
@@ -108,22 +109,24 @@ def get_posts():
     return posts
 
 
-# Feed the all_posts path an individual blog/feed to parse and display from inside the template
 def get_single_blog(feed):
+    '''Feed the all_posts path an individual blog/feed to parse and display from inside the template'''
     the_feed = fp.parse(feed)
     single_blog_posts = the_feed['entries']
     return single_blog_posts
 
-# simple method to be called from the main app
+
 def get_subscriptions():
+    '''simple method to pass the subscriptions (will improve here)'''
     s = subscriptions
     return s
 
 
-# This method returns generated html with the days posts.
-# Contrast to the get_single_blog method that generates the html inside the template.
 # TODO: pick the most efficient option: generate html in template or in code
 def get_sorted_posts(sorted_posts):
+    '''
+    This method returns generated html with the days posts. Contrast to the get_single_blog method that
+    generates the html inside the template.'''
     listTemplate = ''' <section>
                 <h2 class="page-header no-margin-top"><a href="{3}">{2}</a></h2>
                 <p>{4}</p>

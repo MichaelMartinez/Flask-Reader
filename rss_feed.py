@@ -1,7 +1,8 @@
+import time
 from datetime import datetime, timedelta
 import feedparser as fp
 import pytz
-import time
+
 
 subscriptions = [
     'http://feedpress.me/512pixels',

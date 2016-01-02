@@ -1,11 +1,10 @@
+import os
 from flask import Flask, render_template, redirect, request
 # Import flask-bootstrap extension from extension namespace
 from flask.ext.bootstrap import Bootstrap
 # Import flask moment stuff
 from flask.ext.moment import Moment
-
 from flask.ext.script import Manager
-import os
 from rss_feed import get_sorted_posts, get_posts, get_single_blog, get_subscriptions
 
 # set up base directory

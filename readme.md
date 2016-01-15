@@ -20,6 +20,7 @@ The point of programming (for me, at this point) is to scratch some itches, and 
 1. Add database layer
 2. Form to insert/delete feeds with validation
 3. Add granularity to check individual feeds and more
+4. Add API for voice controlled application to fetch feeds.
 
 ## Whats installed
 

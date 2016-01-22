@@ -17,10 +17,18 @@ The point of programming (for me, at this point) is to scratch some itches, and 
 4. The main index page will poll the feeds and pull down the posts of the day. 
 
 ## Roadmap
-1. Add database layer
-2. Form to insert/delete feeds with validation
-3. Add granularity to check individual feeds and more
-4. Add API for voice controlled application to fetch feeds.
+1. Figure out how to solve the massively IO bound nature of this beast...
+- At launch, the fetch/parse cycle takes about 4 minutes before anything is shown
+- This program needs to fetch the RSS feeds asynchronously/concurrently or through a task queue. 
+- That means I have a choice to make: Twisted, Celery, asyncio, multiprocessing, Gevent
+- Perhaps I could prefetch the feeds with a GO program...
+- Perhaps I could rewrite this in Go or Java... 
+- Situation is stalled.
+
+2. Add database layer
+3. Form to insert/delete feeds with validation
+4. Add granularity to check individual feeds and more
+5. Add API for voice controlled application to fetch feeds.
 
 ## Whats installed
 

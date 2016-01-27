@@ -7,6 +7,7 @@ from flask.ext.bootstrap import Bootstrap
 # Import flask moment stuff
 from flask.ext.moment import Moment
 from flask.ext.script import Manager
+from flask_debugtoolbar import DebugToolbarExtension
 from rss_feed import get_sorted_posts, get_posts, get_single_blog, get_subscriptions
 
 # set up base directory
@@ -28,6 +29,8 @@ moment = Moment(app)
 # Flask Script
 manager = Manager(app)
 
+toolbar = DebugToolbarExtension(app)
+app.config['DEBUG_TB_PROFILER_ENABLED'] = True
 '''-----------------^^^^-----------------'''
 
 

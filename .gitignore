@@ -52,3 +52,4 @@ Status API Training Shop Blog About Pricing
 *.ipynb
 Flask_Book_Dev.py
 raw.html
+__pycache__/

@@ -1,3 +1,5 @@
+#import gevent
+#from gevent import monkey; monkey.patch_all()
 import time
 from datetime import datetime, timedelta
 
@@ -108,6 +110,35 @@ def get_posts():
                 posts.reverse()
     return posts
 
+# def get_post_gv(s):
+#     f = fp.parse(s)
+#     try:
+#         blog = f['feed']['title']
+#     except KeyError:
+#         blog = "blog"
+#     for e in f['entries']:
+#         try:
+#             when = e['published_parsed']
+#         except KeyError:
+#             when = e['updated_parsed']
+#         when = utc.localize(datetime.fromtimestamp(time.mktime(when)))
+#         if when > start:
+#             title = e['title']
+#             try:
+#                 body = e['content'][0]['value']
+#             except KeyError:
+#                 body = e['summary']
+#             link = e['link']
+#             posts.append((when, blog, title, link, body))
+#
+#             # Sort the posts in reverse chronological order.
+#             posts.sort()
+#             posts.reverse()
+#     return posts
+
+# def get_posts_call():
+#     jobs = [gevent.spawn(get_post_gv, s) for s in subscriptions]
+#     gevent.wait(jobs)
 
 def get_single_blog(feed):
     '''Feed the all_posts path an individual blog/feed to parse and display from inside the template'''

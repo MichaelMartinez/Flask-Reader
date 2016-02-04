@@ -8,7 +8,10 @@ from flask.ext.bootstrap import Bootstrap
 from flask.ext.moment import Moment
 from flask.ext.script import Manager
 from flask_debugtoolbar import DebugToolbarExtension
-from rss_feed import get_sorted_posts, get_posts, get_single_blog, get_subscriptions
+from rss_feed import get_sorted_posts, get_posts, get_single_blog, get_subscriptions, get_posts_call
+#from gevent import monkey
+
+#monkey.patch_all()
 
 # set up base directory
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -38,6 +41,7 @@ app.config['DEBUG_TB_PROFILER_ENABLED'] = True
 def index():
     page_title = 'Today\'s Posts from all feeds'
     posts = get_posts()
+    #posts = get_posts_call()
     my_posts = get_sorted_posts(posts)
     # TODO: async or pull from DB or something... thing is sslllooowwww.
 

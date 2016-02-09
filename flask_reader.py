@@ -8,7 +8,7 @@ from flask.ext.bootstrap import Bootstrap
 from flask.ext.moment import Moment
 from flask.ext.script import Manager
 from flask_debugtoolbar import DebugToolbarExtension
-from rss_feed import get_sorted_posts, get_posts, get_single_blog, get_subscriptions, get_posts_call
+from rss_feed import get_sorted_posts, get_posts, get_single_blog, get_subscriptions
 #from gevent import monkey
 
 #monkey.patch_all()

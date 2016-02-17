@@ -66,7 +66,11 @@ subscriptions = [
     'http://planetpython.org/rss20.xml',
     'https://hackaday.com/blog/feed/',
     'http://planet.ubuntu.com/rss20.xml',
-    'http://www.ianww.com/blog/rss/']
+    'http://www.ianww.com/blog/rss/',
+    'http://dave.cheney.net/feed',
+    'http://feeds.feedburner.com/planetvm/jeAy',
+    'http://titanroad.com/feed/',
+    'https://feeds.feedburner.com/ServeTheHome']
 
 # Date and time setup. I want only posts from "today,"
 # where the day lasts until 2 AM.
